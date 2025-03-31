@@ -4,6 +4,7 @@ import { PrismaClient } from '@prisma/client';
 import dotenv from 'dotenv';
 import candidateRoutes from './routes/candidateRoutes';
 import positionRoutes from './routes/positionRoutes';
+import aplicacionLTIRoutes from './routes/aplicacionLTIRoutes';
 import { uploadFile } from './application/services/fileUploadService';
 import cors from 'cors';
 
@@ -45,6 +46,9 @@ app.post('/upload', uploadFile);
 
 // Route to get candidates by position
 app.use('/position', positionRoutes);
+
+// Import and use aplicacionLTIRoutes
+app.use('/api/aplicaciones', aplicacionLTIRoutes);
 
 app.use((req, res, next) => {
   console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
